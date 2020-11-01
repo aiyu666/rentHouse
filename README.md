@@ -8,19 +8,37 @@
 npm install
 ```
 
-## Config
-Create a `.env` file.
-Set below information
-```
-LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  // Line notify token you need to apply in your account
-X_CSRF_TOKEN = <X_CSRF_TOKEN> // 591 csrf token you need to get from the 591 webside
-COOKIE = <COOKIE> // 591 cookie you need to get from the 591 webside
-TARGET_URL = <TARGET_URL> // the target url you want to get the first hand in 591
-REQUEST_FREQUENCY = <REQUEST_FREQUENCY> // the frequency you want to check
-```
+## Configuration
+1. 打開`開發人員工具`
+2. 找到 `network` 找到 `XHR` 
+3. 去 591 租屋網設定你想要關注的設定
+  ![](https://i.imgur.com/3p0TgZY.png)
+4. 抓到我們要的資料
+  ![](https://i.imgur.com/M3BKEq8.png)
+5. 找出 Header 中的 `URL`、`Cookie`、`X-CSRF-TOKEN`
+     * URL
+    ![](https://i.imgur.com/cwep44R.png)
+     * Cookie
+    ![](https://i.imgur.com/juu8lku.png)
+     * X_CSRF_TOKEN
+    ![](https://i.imgur.com/GHdNysj.png)
+6. 申請 Line Notify Token [連結](https://notify-bot.line.me/my/)
+  ![](https://i.imgur.com/TXy9qGB.png)
+
+7. 設定 `.env`
+    ```
+    LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
+    X_CSRF_TOKEN = <X_CSRF_TOKEN> 
+    COOKIE = <COOKIE> 
+    TARGET_URL = <TARGET_URL> 
+    REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
+    ```
+    > REQUEST_FREQUENCY 單位為毫秒，所以一秒就是 `1000`，建議不要調太低。
 ## Run
 ```
 npm run start
+or
+node app.js
 ```
 
 Then ...
