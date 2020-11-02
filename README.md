@@ -3,7 +3,7 @@
 讓你租房不再慢人一步
 自動推 LineNotify 讓你馬上知道第一手租屋消息
 
-![](https://i.imgur.com/BJOUGDS.jpg)
+![](https://i.imgur.com/wvnFcYh.png)
 
 
 ## Install
@@ -47,4 +47,4 @@ node app.js
 Then ...
 Enjoy it !
 
-![](https://i.imgur.com/BJOUGDS.jpg)
+![](https://i.imgur.com/wvnFcYh.png)
