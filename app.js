@@ -4,9 +4,10 @@ const { getRequest } = require('./lib/request');
 const sendLineNotify = require('./lib/sendLineNotify');
 
 let nowTimestamp = Math.floor(Date.now() / 1000);
+let stopIntervalId;
 
 (() => {
-  setInterval(async () => {
+  stopIntervalId = setInterval(async () => {
     console.log(`${new Date()}: '我還活著'`);
     try {
       const resp = await getRequest({
@@ -25,6 +26,7 @@ let nowTimestamp = Math.floor(Date.now() / 1000);
         sendLineNotify(`\nhttps://rent.591.com.tw/rent-detail-${targetData[i].id}.html`, process.env.LINE_NOTIFY_TOKEN);
       }
     } catch (error) {
+      clearInterval(stopIntervalId);
       console.error(`Fetch the 591 rent fail: ${error}`);
       sendLineNotify('\n好像出事了! 檢查一下吧。');
     }

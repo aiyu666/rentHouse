@@ -37,6 +37,7 @@ npm install
     REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
     ```
     > REQUEST_FREQUENCY 單位為毫秒，所以一秒就是 `1000`，建議不要調太低。
+
 ## Run
 ```
 npm run start
@@ -48,3 +49,8 @@ Then ...
 Enjoy it !
 
 ![](https://i.imgur.com/wvnFcYh.png)
+
+
+| 比較項目 | QA   | QC   |
+| -------- | ---- | ---- |
+|          | Text | Text |
