@@ -49,8 +49,3 @@ Then ...
 Enjoy it !
 
 ![](https://i.imgur.com/wvnFcYh.png)
-
-
-| 比較項目 | QA   | QC   |
-| -------- | ---- | ---- |
-|          | Text | Text |
