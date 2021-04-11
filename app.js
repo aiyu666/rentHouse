@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const { getRequest } = require('./lib/request');
 const sendLineNotify = require('./lib/sendLineNotify');
-const getToken = require('./lib/getToekn');
+const getToken = require('./lib/getToken');
 
 let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
