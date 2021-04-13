@@ -6,12 +6,14 @@ const getToken = require('./lib/getToken');
 
 let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
-let csrf_token = process.env.X_CSRF_TOKEN;
-let cookie = process.env.COOKIE;
+let countFail = 0;
+
 (() => {
   stopIntervalId = setInterval(async () => {
     console.log(`${new Date()}: '我還活著'`);
-    
+    const headerInfo = await getToken();
+    const csrf_token = headerInfo[0];
+    const cookie = headerInfo[1];
     try {
       const resp = await getRequest({
         url: process.env.TARGET_URL,
@@ -21,9 +23,7 @@ let cookie = process.env.COOKIE;
         },
         json: true,
       });
-      const headerInfo = await getToken();
-      csrf_token = headerInfo[0];
-      cookie = headerInfo[1];    
+      if(resp.statusCode !== 200) throw `Token 可能過期了，目前 StatusCode: ${resp.statusCode}`;
       const { data } = resp.body.data;
       const targetData = data.filter((post) => post.updatetime > nowTimestamp);
       if (targetData.length === 0) return;
@@ -32,9 +32,12 @@ let cookie = process.env.COOKIE;
         await sendLineNotify(`\nhttps://rent.591.com.tw/rent-detail-${targetData[i].id}.html`, process.env.LINE_NOTIFY_TOKEN);
       }
     } catch (error) {
-      clearInterval(stopIntervalId);
+      if(countFail > 10) {
+        await sendLineNotify(`\n好像出事了! 但是我嘗試重新拿 Token 第 ${countFail} 次了所以暫時先把程式關閉，有空可以檢查一下。\n `, process.env.LINE_NOTIFY_TOKEN);
+        clearInterval(stopIntervalId);
+      }  
       console.error(`Fetch the 591 rent fail: ${error}`);
-      await sendLineNotify('\n好像出事了! 檢查一下吧。', process.env.LINE_NOTIFY_TOKEN);
+      countFail += 1;
     }
   }, process.env.REQUEST_FREQUENCY);
 })();

@@ -18,13 +18,9 @@ npm install
   ![](https://i.imgur.com/3p0TgZY.png)
 4. 抓到我們要的資料
   ![](https://i.imgur.com/M3BKEq8.png)
-5. 找出 Header 中的 `URL`、`Cookie`、`X-CSRF-TOKEN`
+5. 找出 Header 中的 `URL`
      * URL
     ![](https://i.imgur.com/cwep44R.png)
-     * Cookie
-    ![](https://i.imgur.com/juu8lku.png)
-     * X_CSRF_TOKEN
-    ![](https://i.imgur.com/GHdNysj.png)
 6. 申請 Line Notify Token [連結](https://notify-bot.line.me/my/)
   ![](https://i.imgur.com/TXy9qGB.png)
 
