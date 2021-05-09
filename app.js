@@ -1,4 +1,5 @@
 require('dotenv').config();
+const http = require('http');
 
 const { getRequest } = require('./lib/request');
 const sendLineNotify = require('./lib/sendLineNotify');
@@ -7,13 +8,19 @@ const getToken = require('./lib/getToken');
 let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
 let countFail = 0;
+let serviceStatus = true;
 
 (() => {
   stopIntervalId = setInterval(async () => {
-    console.log(`${new Date()}: '我還活著'`);
     const headerInfo = await getToken();
     const csrf_token = headerInfo[0];
     const cookie = headerInfo[1];
+    const servicePing = await getRequest(`http://localhost:${process.env.PORT || 5000}/ping`);
+    if(servicePing.statusCode !== 200){
+      console.error('Ping fail plz check it.')
+      serviceStatus = false;
+      clearInterval(stopIntervalId);
+    }
     try {
       const resp = await getRequest({
         url: process.env.TARGET_URL,
@@ -41,3 +48,23 @@ let countFail = 0;
     }
   }, process.env.REQUEST_FREQUENCY);
 })();
+
+const server = http.createServer(function (req, res) {
+  if(!serviceStatus){
+    console.error(`Service stopping.`)
+    res.writeHead(500,{'Content-Type':'text/html'});
+    return res.end('Service have some problem QQ plz check the log.');  
+  }
+  if(req.url=='/ping'){
+    console.log('我還活著!')
+    res.writeHead(200,{'Content-Type':'text/html'});
+    res.write('pong');
+    return res.end();
+  }
+  res.writeHead(400,{'Content-Type':'text/html'});
+  return res.end('Invalid Request!');
+});
+
+server.listen(process.env.PORT || 5000);
+ 
+console.log(`Node.js web server at port ${process.env.PORT || 5000} is running..`)
