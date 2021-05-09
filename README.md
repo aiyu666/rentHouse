@@ -45,3 +45,10 @@ Then ...
 Enjoy it !
 
 ![](https://i.imgur.com/wvnFcYh.png)
+
+
+# Note
+heroku 分支可以部署到 heroku 就不用自己在 local run
+
+有問題的話請聯絡我:
+email: zrobin8741@gmail.com

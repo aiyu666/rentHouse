@@ -8,14 +8,16 @@ const getToken = require('./lib/getToken');
 let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
 let countFail = 0;
-let serviceStatus = true;
+let serviceStatus = process.env.SERVICE_STATUS || 'true';
 
 (() => {
+  if(serviceStatus !== 'true') return console.log('Default service status is false.');
   stopIntervalId = setInterval(async () => {
     const headerInfo = await getToken();
     const csrf_token = headerInfo[0];
     const cookie = headerInfo[1];
     const servicePing = await getRequest(`http://localhost:${process.env.PORT || 5000}/ping`);
+    console.log(servicePing.statusCode !== 200)
     if(servicePing.statusCode !== 200){
       console.error('Ping fail plz check it.')
       serviceStatus = false;
