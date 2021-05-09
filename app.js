@@ -17,7 +17,6 @@ let serviceStatus = process.env.SERVICE_STATUS || 'true';
     const csrf_token = headerInfo[0];
     const cookie = headerInfo[1];
     const servicePing = await getRequest(`http://localhost:${process.env.PORT || 5000}/ping`);
-    console.log(servicePing.statusCode !== 200)
     if(servicePing.statusCode !== 200){
       console.error('Ping fail plz check it.')
       serviceStatus = false;
