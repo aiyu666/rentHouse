@@ -27,8 +27,6 @@ npm install
 7. 設定 `.env`
     ```
     LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
-    X_CSRF_TOKEN = <X_CSRF_TOKEN> 
-    COOKIE = <COOKIE> 
     TARGET_URL = <TARGET_URL> 
     REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
     ```
