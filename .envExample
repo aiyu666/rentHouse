@@ -3,3 +3,4 @@ TARGET_URL =                // the url whitch you get from 591
 REQUEST_FREQUENCY =         // at least 1000
 PORT =                      // 5000
 SERVICE_STATUS =            // true or false
+HEROKU_URL =                // https://<app_name>.herokuapp.com

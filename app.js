@@ -16,7 +16,7 @@ let serviceStatus = process.env.SERVICE_STATUS || 'true';
     const headerInfo = await getToken();
     const csrf_token = headerInfo[0];
     const cookie = headerInfo[1];
-    const servicePing = await getRequest(`http://localhost:${process.env.PORT || 5000}/ping`);
+    const servicePing = await getRequest(`${process.env.HEROKU_URL}/ping`);
     if(servicePing.statusCode !== 200){
       console.error('Ping fail plz check it.')
       serviceStatus = false;
