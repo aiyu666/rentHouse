@@ -26,9 +26,12 @@ npm install
 
 7. 設定 `.env`
     ```
-    LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
-    TARGET_URL = <TARGET_URL> 
-    REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
+    LINE_NOTIFY_TOKEN =         // the line notify token whitch you apply
+    TARGET_URL =                // the url whitch you get from 591
+    REQUEST_FREQUENCY =         // at least 1000
+    PORT =                      // 5000
+    SERVICE_STATUS =            // true or false
+    HEROKU_URL =                // https://<app_name>.herokuapp.com
     ```
     > REQUEST_FREQUENCY 單位為毫秒，所以一秒就是 `1000`，建議不要調太低。
 
