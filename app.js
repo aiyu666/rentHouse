@@ -11,12 +11,13 @@ let countFail = 0;
 (() => {
   stopIntervalId = setInterval(async () => {
     console.log(`${new Date()}: '我還活著'`);
-    const headerInfo = await getToken();
+    const headerInfo = await getToken(process.env.TARGET_URL);
+    const houseListURL = `https://rent.591.com.tw/home/search/rsList?${process.env.TARGET_URL.split('?')[1]}`;
     const csrf_token = headerInfo[0];
     const cookie = headerInfo[1];
     try {
       const resp = await getRequest({
-        url: process.env.TARGET_URL,
+        url: houseListURL,
         headers: {
           'X-CSRF-TOKEN': csrf_token,
           'Cookie': cookie,
