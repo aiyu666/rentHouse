@@ -13,8 +13,9 @@ let serviceStatus = process.env.SERVICE_STATUS || 'true';
 (() => {
   if(serviceStatus !== 'true') return console.log('Default service status is false.');
   stopIntervalId = setInterval(async () => {
-    const headerInfo = await getToken();
-    const csrf_token = headerInfo[0];
+    const headerInfo = await getToken(process.env.TARGET_URL);
+    const houseListURL = `https://rent.591.com.tw/home/search/rsList?${process.env.TARGET_URL.split('?')[1]}`;
+    const csrfToken = headerInfo[0];
     const cookie = headerInfo[1];
     const servicePing = await getRequest(`${process.env.HEROKU_URL}/ping`);
     if(servicePing.statusCode !== 200){
@@ -24,9 +25,9 @@ let serviceStatus = process.env.SERVICE_STATUS || 'true';
     }
     try {
       const resp = await getRequest({
-        url: process.env.TARGET_URL,
+        url: houseListURL,
         headers: {
-          'X-CSRF-TOKEN': csrf_token,
+          'X-CSRF-TOKEN': csrfToken,
           'Cookie': cookie,
         },
         json: true,
