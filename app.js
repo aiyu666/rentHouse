@@ -9,8 +9,7 @@ let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
 let countFail = 0;
 (async () => {
-  // let originPostId = await getFirstPostId();
-  let originPostId = 1;
+  let originPostId = await getFirstPostId();
   stopIntervalId = setInterval(async () => {
     console.log(`${new Date()}: '我還活著'`);
     const headerInfo = await getToken(process.env.TARGET_URL);
