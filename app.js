@@ -5,7 +5,6 @@ const sendLineNotify = require('./lib/sendLineNotify');
 const getFirstPostId = require('./lib/getFirstPostId');
 const getToken = require('./lib/getToken');
 
-let nowTimestamp = Math.floor(Date.now() / 1000);
 let stopIntervalId;
 let countFail = 0;
 (async () => {
