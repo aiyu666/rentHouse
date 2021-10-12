@@ -6,25 +6,19 @@
 ![](https://i.imgur.com/wvnFcYh.png)
 
 
-## Install
+## 安裝相關模組 Install
 ```
 npm install
 ```
 
 ## Configuration
-1. 打開`開發人員工具`
-2. 找到 `network` 找到 `XHR` 
-3. 去 591 租屋網設定你想要關注的設定
+1. 去 591 租屋網設定你想要關注的設定
   ![](https://i.imgur.com/3p0TgZY.png)
-4. 抓到我們要的資料
-  ![](https://i.imgur.com/M3BKEq8.png)
-5. 找出 Header 中的 `URL`
-     * URL
-    ![](https://i.imgur.com/cwep44R.png)
-6. 申請 Line Notify Token [連結](https://notify-bot.line.me/my/)
+2. 複製URL
+  ![](https://i.imgur.com/hbotzcL.jpg)
+3. 申請 Line Notify Token [連結](https://notify-bot.line.me/my/)
   ![](https://i.imgur.com/TXy9qGB.png)
-
-7. 設定 `.env`
+4. 打開 `rentHouse/.envExample` 將檔名改為`.env`，並且設定相關資訊
     ```
     LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
     X_CSRF_TOKEN = <X_CSRF_TOKEN> 
