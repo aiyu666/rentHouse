@@ -20,9 +20,9 @@ npm install
   ![](https://i.imgur.com/TXy9qGB.png)
 4. 打開 `rentHouse/.envExample` 將檔名改為`.env`，並且設定相關資訊
     ```
-    LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
-    TARGET_URL = <TARGET_URL>
-    REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
+    LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>   // 你申請的 LineNotify Token
+    TARGET_URL = <TARGET_URL> // 你設定好的網址
+    REQUEST_FREQUENCY = <REQUEST_FREQUENCY> // 多久爬一次 591 網站
     ```
     > REQUEST_FREQUENCY 單位為毫秒，所以一秒就是 `1000`，建議不要調太低。
 
