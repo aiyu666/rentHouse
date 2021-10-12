@@ -21,9 +21,7 @@ npm install
 4. 打開 `rentHouse/.envExample` 將檔名改為`.env`，並且設定相關資訊
     ```
     LINE_NOTIFY_TOKEN = <LINE_NOTIFY_TOKEN>  
-    X_CSRF_TOKEN = <X_CSRF_TOKEN> 
-    COOKIE = <COOKIE> 
-    TARGET_URL = <TARGET_URL> 
+    TARGET_URL = <TARGET_URL>
     REQUEST_FREQUENCY = <REQUEST_FREQUENCY>
     ```
     > REQUEST_FREQUENCY 單位為毫秒，所以一秒就是 `1000`，建議不要調太低。
